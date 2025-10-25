@@ -1,0 +1,66 @@
+"npm install entrijs
+import Entri from 'entrijs';
+JavaScript 1
+ . fetch('https://api.goentri.com/token', {
+  method: 'POST',
+  body: JSON.stringify({
+    // These values come from the Entri dashboard
+    applicationId: "12345",
+    secret: "12345-67890"
+  }),
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Success:', data); // { "auth_token": "exampletoken..." }
+  // Save the token in a variable or state manager for later use
+})
+.catch((error) => {
+  console.error('Error:', error);
+});
+
+2.python....
+import requests
+import json
+
+url = "https://api.goentri.com/token"
+payload = {
+     # These values come from the Entri dashboard
+    "applicationId": "12345",
+    "secret": "12345-67890"
+}
+headers = {
+    "Content-Type": "application/json"
+}
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+if response.ok:
+    data = response.json()
+    print("Success:", data)
+    # Save the token in a variable or state manager for later use
+else:
+    print("Error:", response.text)
+(JavaScript ) 
+const config = {
+  applicationId: "12345", // From the Entri dashboard
+  token: mySavedToken, // The "auth_token" value saved in the previous step
+  dnsRecords: [
+    {
+      type: "CNAME",
+      host: "www",
+      value: "m.test.com",
+      ttl: 300,
+    },
+    {
+      type: "TXT",
+      host: "@",
+      value: "sample-txt-record",
+      ttl: 300,
+    },
+    {
+      type: "MX",
+      host: "host",
+      value: "mailhost1.example.com",
+      priority: 10,
+      ttl: 300,
+    },
+  ],
+};
